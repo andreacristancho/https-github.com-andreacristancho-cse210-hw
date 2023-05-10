@@ -21,7 +21,13 @@ class Program
                 // Acá debe salir un prompt Get prompt
                 Prompt newprompt = new Prompt();
                 newprompt.GetPrompt();
+                // Debe recoger la respuesta
                 string response = Console.ReadLine();
+                // Debe mostrar la fecha, el prompt y la response
+
+                
+
+
             }
   
             if (userNumber = 2)
@@ -29,6 +35,7 @@ class Program
 
 
             }
+            
 
             if (userNumber = 3)
             {
