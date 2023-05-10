@@ -22,10 +22,17 @@ public class Prompt
         Console.WriteLine($"{randomMessage}");
     }
 
-
-
-
-
-
+    public void Display()
+    {
+        foreach (Prompt prompt in _prompts)
+        {
+            prompt.Display();
+        }
+    }
+       
 
 }
+
+   
+
+
