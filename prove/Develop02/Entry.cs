@@ -1,16 +1,14 @@
 using System;
 
-public class Entry
+class Entry
 {
-    public string _date;
-    public string _prompt;
-    public string _response;
+    public string? _date;
+    public string? _prompt;
+    public string? _response;
 
 
     public void GetResponse()
-    {
-      
-      
+    {   
         _date = DateTime.Now.ToString();
         Prompt newPrompt = new Prompt();
         _prompt = newPrompt.GetPrompt();

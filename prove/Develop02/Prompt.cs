@@ -1,10 +1,11 @@
 using System;
 
-public class Prompt
+class Prompt
 {
 
     public List<string> _prompts = new List<string>();
     
+    public string? _prompt;
     public Prompt()
     {
         _prompts.Add("Who was the most interesting person I interacted with today? ");
@@ -15,12 +16,12 @@ public class Prompt
     }
     
     //public 
-    public string _prompt;
+    
     public string GetPrompt()
     {
         Random random = new Random();
         int randomIndex = random.Next(0,4);
-        //_prompt = _prompts[randomIndex];
+        _prompt = _prompts[randomIndex];
         
         return _prompt;
     }

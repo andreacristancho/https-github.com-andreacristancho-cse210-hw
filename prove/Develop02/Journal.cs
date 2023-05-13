@@ -1,6 +1,6 @@
 using System;
 
-public class Journal
+class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
@@ -11,4 +11,5 @@ public class Journal
                 entry.Display();
             }
     }
+
 }

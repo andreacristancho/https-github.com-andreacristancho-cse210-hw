@@ -6,6 +6,7 @@ class Program
 
     static void Main(string[] args)
     {
+        Journal newjournal = new Journal();
         Console.WriteLine("Welcome to the journal program.");
 
         string userNumber = "-1";
@@ -23,11 +24,14 @@ class Program
                 // VOY ACÁ****
                 Entry newEntry = new Entry();
                 newEntry.GetResponse();
-
-                //Entry entry = new Entry();
-                //entry.GetResponse();
-                //journal.entries.Add(entry);
+                Journal.entries.Add(Entry);
                 
+                static void GetResponse(Entry entry1)
+                {
+                    Entry entry = new Entry();
+                    entry.GetResponse();
+                    Journal.entry1.Add(entry);
+                }   
                 
 
             }
@@ -39,11 +43,7 @@ class Program
 
             }
     
-    static void GetResponse(Journal journal)
-        {
-            Entry entry = new Entry();
-            entry.GetResponse
-        }   
+    
 
             if (userNumber == "3")
             {
