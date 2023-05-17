@@ -26,12 +26,13 @@ public class Fraction
 
     public string GetFractionString()
     {
-        string fractionText = $"{top}/{bottom}";
+        string fractionText = $"{_top}/{_bottom}";
         return fractionText;
     }
 
     public double GetDecimalValue()
-        //double fractionCalculation() = {top}/{bottom};
-        //return fractionCalculation;
-        return (double)_top / (double) _bottom;
+    {
+        
+        return (double)_top / (double)_bottom;
+    }
 }
