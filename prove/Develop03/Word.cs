@@ -9,9 +9,17 @@ public class Word
 
     public Word()
     {
-        _text = " ";
+        _text = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. ";
         _hidden = new List<string>();
     }
+
+    public string getText()
+    {
+        string text = _text;
+        return text;
+    }
+
+
 
     public string getHiddenWords()
     {
