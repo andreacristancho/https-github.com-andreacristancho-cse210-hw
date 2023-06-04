@@ -27,8 +27,8 @@ class Program
       
         // Imprimo la referencia y la escritura
         Console.WriteLine(s.getTextAndRef());
-
-        Console.WriteLine("Press 'Enter' to hide words or type 'quit' to exit:");
+        Console.WriteLine();
+        Console.WriteLine("When sou have something in mind, press 'Enter' to continue.");
         string _response = Console.ReadLine();
 
         while (_response != "quit")
