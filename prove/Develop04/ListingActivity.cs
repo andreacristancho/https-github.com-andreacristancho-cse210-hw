@@ -38,13 +38,39 @@ public class ListingActivity : Activity
     {
         List<string>_userItems = new List<string>(); 
 
-        Console.WriteLine(">");
+        Console.Write(">");
         string item = Console.ReadLine();
         _userItems.Add(item);
-        int count = _userItems.Count;
+        //int count = _userItems.Count;
         return item;
 
     }
+
+    //public string GetUserItemsSum()
+    //{
+    //    List<string>_userItems = new List<string>(); 
+//
+    //    for (int i= 0; i<_userItems.Count; i++)
+    //    {
+    //      string item = _userItems[i];
+    //      _userItems.Add(item);
+    //      int count = _userItems.Count;
+    //      string countString = count.ToString();
+    //      if (i==count)
+    //        return countString;
+    //      else
+    //        return "Error";
+    //    }
+    //}
+
+        
+
+        //string item = Console.ReadLine();
+        //_userItems.Add(item);
+        //int count = _userItems.Count;
+        //return count;
+
+    
 
    
 

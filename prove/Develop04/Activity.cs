@@ -40,24 +40,68 @@ public class Activity
         return text1 + "\n" + "\n"+ text2;
     }
     
-    public static void GetCounter()
-    {
-       for (int i = 5; i < 10; i--)
-       {
-           Console.Write("i");
-           Thread.Sleep(1000);
-           Console.Write("\b \b"); // Erase the + character
-       }
-    }
-   
-   public string DisplayEndMessage()
+    public int GetHowLong()
     {
         Console.WriteLine();
-        string text3 ="Well done!!";
-        string text4 = "You have completed another"  +" "+ _duration + " seconds of the" + " "+ _name +".";
-       
+        Console.WriteLine("How long, in seconds, you like for your session?");
+        string userResponse = Console.ReadLine();
+        int seconds_breath = int.Parse(userResponse);
+        Console.Clear();
+        return seconds_breath;
+    }
+   
+   
+
+    public string DisplayEndMessage()
+    {
+        Console.WriteLine();
+        string text3 = "Well done!!";
+        Console.WriteLine(text3);
+        GetReadySpinner();
+        string text4 = "You have completed another" + " " + _duration + " seconds of the" + " " + _name + ".";
+        Console.WriteLine(text4);
+        GetReadySpinner();
         return text3 + "\n" + text4;
     }
-    
-}
 
+
+
+    public void GetCounter()
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(5);
+
+        while (DateTime.Now < endTime)
+        {
+            for (int j = 5; j >0 ; j--)
+            {
+                Console.Write(j +"");
+                Thread.Sleep(1000);
+                Console.Write("\b \b"); 
+            }
+        }
+    }
+
+
+    public void GetReadySpinner()
+    {
+        
+        List<string> animationStrings = new List<string>();
+        animationStrings.Add("|");
+        animationStrings.Add("/");
+        animationStrings.Add("-");
+        animationStrings.Add("\\");
+        animationStrings.Add("|");
+        animationStrings.Add("-");
+        animationStrings.Add("/");
+        animationStrings.Add("\\");
+        foreach (string s in animationStrings)
+        {
+            Console.Write(s);
+            Thread.Sleep(500);
+            Console.Write("\b \b"); 
+        } 
+        Console.WriteLine();
+    }
+
+}
