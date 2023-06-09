@@ -146,30 +146,6 @@ class Program
 
 
 
-            // NO HE PODIDO CUADRAR LA SUMA DE LOS ITEMS DE LA LISTA DE GetUserItems
-
-            //string countList = list2.GetUserItemsSum();
-           // Console.WriteLine("prueba de Andrea"+ countList);
-            
-            
-            
-            //List<int> numeros = new List<int> { 1, 2, 3, 4, 5 };
-            //List<string> nombres = new List<string> { "Juan", "María", "Pedro", "Luisa" };
-
-            //for (int i = 0; i < userItems.Count; i++)
-            //{
-            //    string item = userItems[i];
-            //    int count = int.Parse(item);
-            //    // Realiza alguna operación con 'nombreActual'
-            //    Console.WriteLine(count);
-            //}
-            //string conteoList = (list1.GetUserItems());
-            //int conteoTotal = int.Parse(conteoList);
-            //Console.WriteLine();
-            
-            
-            //Console.WriteLine("You listed " + total + " items");
-            
             
 
 
