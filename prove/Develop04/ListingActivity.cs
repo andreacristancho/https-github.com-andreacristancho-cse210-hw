@@ -34,34 +34,37 @@ public class ListingActivity : Activity
     }
 
     // DEBO REVISAR PORQUE IMPRIME MAL Y NO ME SUMA LOS ITEMS DE LA LISTA
-    public string GetUserItems()
-    {
-        List<string>_userItems = new List<string>(); 
 
+ 
+    public List<string> GetUserItems()
+    {
+        
         Console.Write(">");
         string item = Console.ReadLine();
         _userItems.Add(item);
         //int count = _userItems.Count;
-        return item;
+        return _userItems;
 
     }
 
-    //public string GetUserItemsSum()
-    //{
-    //    List<string>_userItems = new List<string>(); 
+    public void GetUserItemsSum(List<string>_userItems)
+    {
+        Console.WriteLine("You listed "+ _userItems.Count+ " items");
+    }  
+        //List<string>_userItems = new List<string>(); 
 //
-    //    for (int i= 0; i<_userItems.Count; i++)
-    //    {
-    //      string item = _userItems[i];
-    //      _userItems.Add(item);
-    //      int count = _userItems.Count;
-    //      string countString = count.ToString();
-    //      if (i==count)
-    //        return countString;
-    //      else
-    //        return "Error";
-    //    }
-    //}
+        //for (int i= 0; i<_userItems.Count; i++)
+        //{
+        //  string item = _userItems[i];
+        //  _userItems.Add(item);
+        //  int count = _userItems.Count;
+        //  string countString = count.ToString();
+        //  if (i==count)
+        //    return countString;
+        //  else
+        //    return "Error";
+    
+}
 
         
 
@@ -74,4 +77,4 @@ public class ListingActivity : Activity
 
    
 
-}
+

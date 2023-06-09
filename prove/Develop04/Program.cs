@@ -132,11 +132,20 @@ class Program
             DateTime startTime = DateTime.Now;
             DateTime endTime = startTime.AddSeconds(seconds_list);
 
+            List<string> countListString = new List<string>();
+
             while (DateTime.Now < endTime)
             {
-                string countListString = list2.GetUserItems();
+                countListString = list2.GetUserItems();
                 
             }
+
+            Console.WriteLine(countListString);
+            
+            list2.GetUserItemsSum(countListString);
+
+
+
             // NO HE PODIDO CUADRAR LA SUMA DE LOS ITEMS DE LA LISTA DE GetUserItems
 
             //string countList = list2.GetUserItemsSum();
