@@ -33,7 +33,7 @@ public class ListingActivity : Activity
       return "--- "+_prompt+" ---";
     }
 
-    // DEBO REVISAR PORQUE IMPRIME MAL Y NO ME SUMA LOS ITEMS DE LA LISTA
+
 
  
     public List<string> GetUserItems()
