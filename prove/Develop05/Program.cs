@@ -17,52 +17,48 @@ class Program
         {
        
             userChoice = g1.MenuOptions();
-
-            if (userChoice == "1")
+            if (userChoice =="1")
+        
             {
                 string typeUserChoice = g1.TypeOfGoal();
 
-                    if (typeUserChoice == "1")
-                    {
-                    
+                if (typeUserChoice == "1")
+                {
                 
-                    SimpleGoal s1 = new SimpleGoal(" ", "", 1, false );
-                    s1.CreateGoal();
-                    goalsList.Add(s1);
-                  
-                    //Console.Write(s1.DisplayGoalsList());
+                SimpleGoal s1 = new SimpleGoal(" ", "", 1, false );
+                s1.CreateGoal();
+                goalsList.Add(s1);
+                
+                //Console.Write(s1.DisplayGoalsList());
+                }
 
-                    }
+                else if (typeUserChoice =="2")
+                {
+                
+                EternalGoal e1 = new EternalGoal("","",1,true);
+                e1.CreateGoal();
+                goalsList.Add(e1);
+                }
 
-                    else if (typeUserChoice =="2")
-                    {
 
-                   
-                    EternalGoal e1 = new EternalGoal("","",1,true);
-                    e1.CreateGoal();
-                    goalsList.Add(e1);
-
-                    }
-                    else if (typeUserChoice =="3")
-                    {
+                else if (typeUserChoice =="3")
+                {
                         
-                        ChecklistGoal c1 = new ChecklistGoal("", "", 1, true, 1,1,1);
-                        
-                        c1.CreateGoal();
-                        goalsList.Add(c1);
-
-                    }
+                    ChecklistGoal c1 = new ChecklistGoal("", "", 1, true, 1,1,1);
+                    c1.CreateGoal();
+                    goalsList.Add(c1);
+    
+                }
             }
 
             else if (userChoice =="2")
-            {
-
+            { 
                 Console.WriteLine("The goals are: ");
-
                 for (int i = 0; i < goalsList.Count; i++)
                 {
                     Goal g = goalsList[i];
-                    string eachGoal = (i+1)+". "+g.DisplayGoalsList();
+                    string fulfilled = g.GetFulfilled() ? "X" : " ";
+                    string eachGoal = $"{fulfilled} {i+1}. {g.DisplayGoalsList()}";
                     Console.WriteLine(eachGoal);
                 }
                 Console.WriteLine();
@@ -78,56 +74,68 @@ class Program
 
             else if (userChoice=="4")
             {
-                ReadFromFile();
+                
+                goalsList =ReadFromFile();
                 
             }
 
-
-            else if (userChoice=="5")
-            {//
-                //Console.WriteLine("The goals are: ");
-//
-                //for (int i = 0; i < goalsList.Count; i++)
-                //{
-                //    Goal g = goalsList[i];
-                //    string eachGoal = (i+1)+". "+g.GetName();
-                //    Console.WriteLine(eachGoal);
-                //}
-                //Console.WriteLine("Wich goal did you accomplish? ");
-                //string accomplishGoal = Console.ReadLine();
-//
-                ////ACA DEBO CUADRAR QUE SEGÚN LA ACTIVIDAD TRAIGA LOS POINTS RESPECTIVOS
-            //
-                //for (int i = 0; i < goalsList.Count; i++)
-                //{
-                //    Goal g = goalsList[i];
-                //    string eachPosition = (i+1);
-                //    if (eachPosition == accomplishGoal)
-                //    Console.Write("Congratulations! You have earned "+ 
-                //}
-                //
-    //
-
-
-                
-            }
-
-            else if (userChoice=="6")
+        //CUANDO ENTRO DE NUEVO NO ME ABRE EL ARCHIVO QUE HE GRABADO Y NO ME CORRE EL PUNTO 5
+                    
+                    
+            else if (userChoice == "5")
             {
-
-
+                Console.WriteLine("The goals are: ");
+                for (int i = 0; i < goalsList.Count; i++)
+                {
+                    Goal g = goalsList[i];
+                    int eachPosition = i + 1;
+                    Console.WriteLine($"{eachPosition}.{g.DisplayGoalsList()}");
+                }
+                Console.Write("Which goal did you accomplish? ");
+                string accomplishGoal = Console.ReadLine();
+                int accomplishGoalInt = int.Parse(accomplishGoal);
+    
+                Goal goalToAccomplish = goalsList[accomplishGoalInt - 1];
+    
+                if (goalToAccomplish is SimpleGoal && !goalToAccomplish.GetFulfilled())
+                {
+                    goalToAccomplish.SetFulfilled(true);
+                    Console.WriteLine($"Congratulations! You have earned {goalToAccomplish.GetOnlyPoints()} points for goal {accomplishGoalInt}.");
+                }
+                else if (goalToAccomplish is ChecklistGoal)
+                {
+                    ChecklistGoal checklistGoal = (ChecklistGoal)goalToAccomplish;
+                    int bonus = checklistGoal.GetBonus();
+                    int totalTimes = checklistGoal.GetTotalTimes();
+                    int times = checklistGoal.GetTimes();
+    
+                    if (times < totalTimes)
+                    {
+                        checklistGoal.RecordGoal();
+                        Console.WriteLine($"You have recorded goal {accomplishGoalInt}. Current progress: {times + 1}/{totalTimes}");
+                        Console.WriteLine($"You have earned {goalToAccomplish.GetOnlyPoints()} points.");
+                    }
+                    else if (times == totalTimes)
+                    {
+                        checklistGoal.RecordGoal();
+                        goalToAccomplish.SetFulfilled(true);
+                        Console.WriteLine($"Congratulations! You have completed goal {accomplishGoalInt}.");
+                        Console.WriteLine($"You have earned {goalToAccomplish.GetOnlyPoints()} points and a bonus of {bonus} points.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Goal {accomplishGoalInt} is already fulfilled or not applicable for this action.");
+                }
+    
+                Console.ReadLine();
             }
 
-
-
-
-
-
-        }   
-
+        }
+    
     }
 
-    
+
     static void SaveGoals(List<Goal> goalsList)
     
     {
@@ -143,7 +151,7 @@ class Program
         
             foreach (Goal goal in goalsList)
             {
-                outputFile.WriteLine(goal.DisplayInFile()); // Agrega la representación del goal a la lista de líneas
+                outputFile.WriteLine(goal.DisplayInFile()); 
             }
 
         
@@ -151,21 +159,50 @@ class Program
     }
 
 
-    public static  List<Goal> ReadFromFile()
+    static  List<Goal> ReadFromFile()
     {
         Console.Write("What is the filename for the goal file?: ");
         
-        List<Goal> eachGoal = new List<Goal>();
+        
 
         string filePath = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filePath);
 
-        return eachGoal;
+        List<Goal> eachGoal = new List<Goal>();
+
+        for (int i =1; i<lines.Length; i++)
+        {   
             
-        
+
+            string[] item = lines[i].Split(",");
+            string name = item[0].Trim();
+            string description = item[1].Trim();
+            int points = Convert.ToInt16(item[2]);
+            bool fulfilled = Convert.ToBoolean(item[3].Trim());
+
+            if (item.Length == 4)
+            {
+                SimpleGoal simpleGoal = new SimpleGoal(name, description, points, fulfilled);
+                eachGoal.Add(simpleGoal);
+            }
+            else if (item.Length == 5)
+            {
+                EternalGoal eternalGoal = new EternalGoal(name, description, points, fulfilled);
+                eachGoal.Add(eternalGoal);
+            }
+            else if (item.Length == 7)
+            {
+                int times = Convert.ToInt32(item[4].Trim());
+                int totalTimes = Convert.ToInt32(item[5].Trim());
+                int bonus = Convert.ToInt32(item[6].Trim());
+
+                ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, fulfilled, totalTimes, times, bonus);
+                eachGoal.Add(checklistGoal);
+            }
+
+        }
+        return eachGoal;      
     }
 
-
-    
 }
 

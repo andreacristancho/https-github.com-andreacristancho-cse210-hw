@@ -64,4 +64,9 @@ public class ChecklistGoal : Goal
         return "ChecklistGoal: "+base.DisplayInFile() +", "+ _bonus+"/"+_totalTimes+", "+_times;
 
     }
+
+    public void RecordGoal()
+    {
+        _times++;
+    }
 }   

@@ -12,12 +12,7 @@ public class SimpleGoal : Goal
 
 
 
-    public override void CreateGoal()
-    {
-       base.CreateGoal();
-        
-    }
-
+    
 
     
     public override string DisplayGoalsList()
@@ -33,4 +28,9 @@ public class SimpleGoal : Goal
 
     }
     
+    public override void CreateGoal()
+    {
+        base.CreateGoal();
+        SetFulfilled(false);
+    }
 }

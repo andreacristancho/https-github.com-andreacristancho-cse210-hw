@@ -9,11 +9,6 @@ public class EternalGoal : Goal
     {
 
     }
-    public override void CreateGoal()
-    
-    {
-       base.CreateGoal();
-    }
     
 
      public override string DisplayGoalsList()
@@ -27,6 +22,11 @@ public class EternalGoal : Goal
     {
         return "EternalGoal: "+base.DisplayInFile();
 
+    }
+    public override void CreateGoal()
+    {
+        base.CreateGoal();
+        // No se realiza ninguna acción adicional
     }
 
 }

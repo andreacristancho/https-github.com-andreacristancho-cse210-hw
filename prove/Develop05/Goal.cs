@@ -41,7 +41,7 @@ public class Goal
        return _pointsInt;
     }
 
-    public bool GetFulilled()
+    public bool GetFulfilled()
     {
         return _fulfilled;
     }
@@ -104,5 +104,19 @@ public class Goal
 
     }
 
+    public string GetOnlyName()
+    {
+       return _name;
+    }
+
+    public int GetOnlyPoints()
+    {
+       return _points;
+    }
+
+    public void SetFulfilled(bool fulfilled)
+    {
+        _fulfilled = fulfilled;
+    }
     
 }

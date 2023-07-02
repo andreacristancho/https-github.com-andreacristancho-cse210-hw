@@ -1,3 +1,3 @@
-SimpleGoal: aaaaa, aaaaa, 1, False
-EternalGoal: sssss, sssss, 2, True
-ChecklistGoal: sssss, dddddd, 3, True, 100/2, 0
+SimpleGoal: EternalGoal: dd, dd, 2, True
+EternalGoal: scriptures, Read today, 50, True
+ChecklistGoal: Llamar Ivonne, ministrarla, 100, True, 500/3, 0
